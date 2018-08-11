@@ -67,10 +67,64 @@ class Vaardigheid {
         return v.getType() + " - " + v.getItem() + " - " + v.bepaalWaarde(v.getScore());
        }
 
+       string printVaardigheid(){
+        return getType() + " - " + getItem() + " - " + bepaalWaarde(getScore());
+       }
+
+
 };
 
 
+class Werkervaring {
 
+    //Members
+    private:
+       string sBedrijf;
+       string sPeriode;
+       string sTechnologie;
+
+    public:
+       //Getters & Setters
+        // Member functions definitions
+        string getBedrijf() {
+           return sBedrijf;
+        }
+
+        void setBedrijf(string bedrijf) {
+           sBedrijf = bedrijf;
+        }
+
+        string getPeriode() {
+           return sPeriode;
+        }
+
+        void setPeriode(string periode) {
+           sPeriode = periode;
+        }
+
+        string getTechnologie() {
+           return sTechnologie;
+        }
+
+        void setTechnologie( string technologie) {
+           sTechnologie = technologie;
+        }
+
+        //Constructor
+        Werkervaring(string bedrijf, string periode, string technologie){
+            sBedrijf = bedrijf;
+            sPeriode = periode;
+            sTechnologie = technologie;
+        }
+
+        //Functions
+        string printWerkervaring()
+        {
+            return "* " + getBedrijf() + " (" + getPeriode() + ") \n Technologie: " + getTechnologie() + '\n';
+        }
+
+
+};
 
 
 
@@ -108,10 +162,35 @@ int main()
 
     for (std::list<Vaardigheid>::iterator itv = listOfVaardigheden.begin(); itv != listOfVaardigheden.end(); itv++)
     {
-        std::cout << itv->getType() << " - " << itv->getItem() << " - " << itv->bepaalWaarde(itv->getScore()) << endl;
-        //std::cout << itv->printVaardigheid(listOfVaardigheden[itv]) << endl;
+        //std::cout << itv->getType() << " - " << itv->getItem() << " - " << itv->bepaalWaarde(itv->getScore()) << endl;
+        std::cout << itv->printVaardigheid() << endl;
     }
 
+    cout << endl;
+
+    cout << "-- WERKERVARINGEN --" << endl;
+    list<Werkervaring> listOfWerkervaringen;
+
+    Werkervaring w1 ("AZ Maria Middelares", "01/2018 => 05/2018", ".Net (Visual Basic), MS SQL Server (sql: stored procedures,indexes, constraints, ...");
+    Werkervaring w2 ("Authority", "08/2017 => 09/2017", "Google Analytics: tracking visitors, conversies, ...");
+    Werkervaring w3 ("Tradecom", "10/2016 => 12/2016", "C#, MySQL");
+    Werkervaring w4 ("Nationale Loterij", "09/2014 => 12/2015", "sql, Oracle SQL Developer, MS Office 2010, Windows 7");
+    Werkervaring w5 ("CM Midden-Vlaanderen", "08/2013 => 08/2014", "html, css, jQuery, Javascript, xml, jsf, Java Struts 1.2, sql, Oracle SQL Developer, Eclipse, MS Office 2013, Windows 7");
+    Werkervaring w6 ("Interim", "02/2011 => 07/2013", "");
+    //cout << w1.printWerkervaring() << endl;
+
+    listOfWerkervaringen.push_back(w1);
+    listOfWerkervaringen.push_back(w2);
+    listOfWerkervaringen.push_back(w3);
+    listOfWerkervaringen.push_back(w4);
+    listOfWerkervaringen.push_back(w5);
+    listOfWerkervaringen.push_back(w6);
+
+
+    for (std::list<Werkervaring>::iterator itw = listOfWerkervaringen.begin(); itw != listOfWerkervaringen.end(); itw++)
+    {
+        std::cout << itw->printWerkervaring() << endl;
+    }
 
     return 0; //End of the program
 }
